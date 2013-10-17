@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  *	@author:	a4p ASD / Andreas Dorner
  *	@company:	apps4print / page one GmbH, Nürnberg, Germany
  *
@@ -41,10 +41,10 @@ $aModule = array(
 	'url'			=> 'http://www.apps4print.com', 
 	'email'			=> 'alexander.steiss@apps4print.com', 
 	'extend'	  	=> array(
-		'oxconfig'								=> 'apps4print/a4p_subdomain_themes/core/a4p_sdt__oxconfig', 
-		'oxviewconfig'							=> 'apps4print/a4p_subdomain_themes/core/a4p_sdt__oxviewconfig' 
+		'oxconfig'								=> 'apps4print/a4p_subdomain_themes/core/a4p_sdt__oxconfig'
 	),
 	'files'			=> array(
+		'a4p_sdt_log'							=> 'apps4print/a4p_subdomain_themes/core/a4p_sdt_log.php'
 	),
 	'blocks'		=> array(
 	),
