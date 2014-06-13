@@ -2,7 +2,7 @@
 
 /**
  *	@author:	a4p ASD / Andreas Dorner
- *	@company:	apps4print / page one GmbH, Nürnberg, Germany
+ *	@company:	apps4print / page one GmbH, NÃ¼rnberg, Germany
  *
  *
  *	@version:	1.0.0
@@ -29,10 +29,10 @@ $sMetadataVersion = '1.0';
 
 $aModule = array(
 	'id'			=> 'a4p_subdomain_themes', 
-	'title'			=> 'apps4print - subdomain themes module', 
+	'title'			=> 'apps4print - subdomain themes', 
 	'description'	=> array(
-		'de'			=> 'apps4print subdomain themes module', 
-		'en'			=> 'apps4print subdomain themes module'
+		'de'			=> 'theme wechseln je subdomain', 
+		'en'			=> 'switch theme by subdomain'
 	),
 	'lang'			=> 'de', 
 	'thumbnail'		=> 'out/img/apps4print/_a4p_theme.jpg', 
