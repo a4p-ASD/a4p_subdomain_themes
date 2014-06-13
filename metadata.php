@@ -11,7 +11,7 @@
  *
  *	metadata.php
  *
- *	apps4print - subdomain themes module for OXID eShop
+ *	apps4print - subdomain themes
  *
  */
 
@@ -29,10 +29,10 @@ $sMetadataVersion = '1.0';
 
 $aModule = array(
 	'id'			=> 'a4p_subdomain_themes', 
-	'title'			=> 'apps4print - subdomain themes', 
+	'title'			=> 'apps4print - a4p_subdomain_themes', 
 	'description'	=> array(
-		'de'			=> 'theme wechseln je subdomain', 
-		'en'			=> 'switch theme by subdomain'
+		'de'			=> 'subdomain themes', 
+		'en'			=> 'subdomain themes'
 	),
 	'lang'			=> 'de', 
 	'thumbnail'		=> 'out/img/apps4print/_a4p_theme.jpg', 
