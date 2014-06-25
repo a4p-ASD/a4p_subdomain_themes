@@ -2,7 +2,7 @@
 
 /**
  *	@author:	a4p ASD / Andreas Dorner
- *	@company:	apps4print / page one GmbH, Nürnberg, Germany
+ *	@company:	apps4print / page one GmbH, NÃ¼rnberg, Germany
  *
  *
  *	@version:	1.0.0
@@ -45,4 +45,4 @@
 		zeigt anderes Theme je nach aktueller Subdomain an
 
 	
-	wird Shop über z.B. "a4p_demo1.apps4print.com" aufgerufen, wird Theme "a4p_demo1" angezeigt
+	wird Shop Ã¼ber z.B. "a4p_demo1.apps4print.com" aufgerufen, wird Theme "a4p_demo1" angezeigt

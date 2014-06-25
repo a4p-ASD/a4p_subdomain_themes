@@ -41,10 +41,9 @@ $aModule = array(
 	'url'			=> 'http://www.apps4print.com', 
 	'email'			=> 'alexander.steiss@apps4print.com', 
 	'extend'	  	=> array(
-		'oxconfig'								=> 'apps4print/a4p_subdomain_themes/core/a4p_sdt__oxconfig'
+		'oxconfig'								=> 'apps4print/a4p_subdomain_themes/core/a4p_st__oxconfig'
 	),
 	'files'			=> array(
-		'a4p_sdt_log'							=> 'apps4print/a4p_subdomain_themes/core/a4p_sdt_log.php'
 	),
 	'blocks'		=> array(
 	),
