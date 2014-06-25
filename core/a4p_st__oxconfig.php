@@ -5,8 +5,8 @@
  *	@company:	apps4print / page one GmbH, Nürnberg, Germany
  *
  *
- *	@version:	1.0.0
- *	@date:		16.10.2013
+ *	@version:	1.0.1
+ *	@date:		25.06.2014
  *
  *
  * a4p_st__oxconfig.php

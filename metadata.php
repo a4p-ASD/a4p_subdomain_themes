@@ -5,8 +5,8 @@
  *	@company:	apps4print / page one GmbH, Nürnberg, Germany
  *
  *
- *	@version:	1.0.0
- *	@date:		16.10.2013
+ *	@version:	1.0.1
+ *	@date:		25.06.2014
  *
  *
  *	metadata.php
@@ -36,7 +36,7 @@ $aModule = array(
 	),
 	'lang'			=> 'de', 
 	'thumbnail'		=> 'out/img/apps4print/_a4p_theme.jpg', 
-	'version'		=> '<a4p_VERSION> (1.0.0)', 
+	'version'		=> '<a4p_VERSION> (1.0.1)', 
 	'author'		=> 'apps4print', 
 	'url'			=> 'http://www.apps4print.com', 
 	'email'			=> 'alexander.steiss@apps4print.com', 
