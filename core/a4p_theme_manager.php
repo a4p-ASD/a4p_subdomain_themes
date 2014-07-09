@@ -69,7 +69,7 @@ class a4p_theme_manager {
 		// ------------------------------------------------------------------------------------------------
 		// create folder in application/views/<theme>
 		$s_shop_application_views				= $s_shopDir . "application" . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR;
-		$s_theme_folder_application_views		= $s_shop_application_views . $s_theme_name;
+		$s_theme_folder_application_views		= $s_shop_application_views . $s_theme_id;
 		if ( !file_exists( $s_theme_folder_application_views ) ) {
 			$b_ret_mkdir						= mkdir( $s_theme_folder_application_views, 0777, true );
 		}
@@ -78,7 +78,7 @@ class a4p_theme_manager {
 		// ------------------------------------------------------------------------------------------------
 		// create folder in out/<theme> + /img
 		$s_shop_folder_out						= $s_shopDir . "out" . DIRECTORY_SEPARATOR;
-		$s_theme_folder_out						= $s_shop_folder_out . $s_theme_name;
+		$s_theme_folder_out						= $s_shop_folder_out . $s_theme_id;
 		if ( !file_exists( $s_theme_folder_out ) ) {
 			$b_ret_mkdir						= mkdir( $s_theme_folder_out, 0777, true );
 		}
