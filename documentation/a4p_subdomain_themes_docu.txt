@@ -31,7 +31,9 @@ FUNKTIONSUMFANG / BESONDERHEITEN
 
 	Kurzbeschreibung:
 
-		zeigt anderes Theme je nach aktueller Subdomain an
+		zeigt anderes Theme je nach aktueller (Sub-)Domain an
 
 	
-	wird Shop über z.B. "a4p_demo1.apps4print.com" aufgerufen, wird Theme "a4p_demo1" angezeigt
+	wird Shop über z.B. "a4p_demo1.apps4print.com" aufgerufen, wird Theme "a4p_demo1" angezeigt, falls dieses existiert und die ID "a4p_demo1" hat
+
+	wird "andererShop.com" statt "normalerShop.com" aufgerufen, wird nach der Domain in Themes gesucht und ggf aktiviert.

@@ -25,7 +25,7 @@ class a4p_st__oxconfig extends a4p_st__oxconfig_parent {
 	// ------------------------------------------------------------------------------------------------
 	
 	protected $o_a4p_debug_log					= null;
-		
+	
 	// ------------------------------------------------------------------------------------------------
 	// ------------------------------------------------------------------------------------------------
 	
@@ -45,7 +45,6 @@ class a4p_st__oxconfig extends a4p_st__oxconfig_parent {
 		$o_oxModule								= oxNew( "oxModule" );
 		$o_oxModule->load( "a4p_debug_log" );
 		if ( $o_oxModule->isActive() ) {
-		
 			$this->o_a4p_debug_log					= oxNew( "a4p_debug_log" );
 			$this->o_a4p_debug_log->a4p_debug_log_init( true, __CLASS__ . ".txt", null );
 		}
@@ -85,11 +84,20 @@ class a4p_st__oxconfig extends a4p_st__oxconfig_parent {
 		
 		
 		// ------------------------------------------------------------------------------------------------
+		// URL als Themename suchen
+		$s_url_themename						= false;
+		if ( !is_null( $a_domain_explode[ "subdomain" ] ) )
+			$s_url_themename					= $a_domain_explode[ "subdomain" ];
+		else
+			$s_url_themename					= $a_domain_explode[ "domain" ];
+		
+		
+		// ------------------------------------------------------------------------------------------------
 		// prüfen, ob Subdomain als Theme existiert
 		$o_oxTheme								= oxNew( "oxTheme" );
-		if ( $a_domain_explode[ "subdomain" ] ) {
+		if ( $s_url_themename ) {
 		
-			$b_oxTheme_exists					= $o_oxTheme->load( $a_domain_explode[ "subdomain" ] );
+			$b_oxTheme_exists					= $o_oxTheme->load( $s_url_themename );
 		}
 		// ------------------------------------------------------------------------------------------------
 
@@ -109,11 +117,11 @@ class a4p_st__oxconfig extends a4p_st__oxconfig_parent {
 				// Parent-Theme setzen
 				$this->setConfigParam( "sTheme", $s_parent_theme );
 				
-				$s_child_theme					= $a_domain_explode[ "subdomain" ];
+				$s_child_theme					= $s_url_themename;
 				
 			} else {
 				
-				$this->setConfigParam( "sTheme", $a_domain_explode[ "subdomain" ] );
+				$this->setConfigParam( "sTheme", $s_url_themename );
 			}
 			
 			
@@ -142,7 +150,7 @@ class a4p_st__oxconfig extends a4p_st__oxconfig_parent {
 		
 		// ------------------------------------------------------------------------------------------------
 		// Shop-URL auf Subdomain setzen
-		$this->setConfigParam( 'sShopURL', $s_shop_URL );
+		$this->setConfigParam( "sShopURL", $s_shop_URL );
 
 
 
