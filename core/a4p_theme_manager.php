@@ -132,17 +132,11 @@ class a4p_theme_manager {
 	
 	public function copy_theme_settings( $s_srcTheme_name, $s_trgTheme_name ) {
 		
-		
-		
 		#	oxRegistry::getConfig()
 		
-	#	public function saveShopConfVar( $sVarType, $sVarName, $sVarVal, $sShopId = null, $sModule = '' )
-		
-		
-	#	public function getShopConfVar( $sVarName, $sShopId = null, $sModule = '' )
-		
-		
-		
+		#	public function saveShopConfVar( $sVarType, $sVarName, $sVarVal, $sShopId = null, $sModule = '' )
+				
+		#	public function getShopConfVar( $sVarName, $sShopId = null, $sModule = '' )
 		
 
 		// ----------------------------------------------------------------------------------------------------------------
@@ -150,9 +144,7 @@ class a4p_theme_manager {
 		
 		
 		$this->_copy_oxconfig( $s_srcTheme_name, $s_trgTheme_name );
-		
-		
-		#return $o_theme_configs;
+
 	}
 	
 	// ----------------------------------------------------------------------------------------------------------------
@@ -218,7 +210,7 @@ class a4p_theme_manager {
 		
 		// ------------------------------------------------------------------------------------------------
 		if ( $this->o_a4p_debug_log ) {
-			$this->o_a4p_debug_log->_debug( "\$sSelect", $sSelect, __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_debug( "\$sSelect", $sSelect, __FILE__, __FUNCTION__, __LINE__ );
 		}
 		
 		#$o_theme_configs->assignRecord( $sSelect );
@@ -240,33 +232,33 @@ class a4p_theme_manager {
 		
 		/*
 		$a_new									= $rows->fields;
+	
+		$a_new[ "oxid" ]						= oxUtilsObject::getInstance()->generateUID();
+		$a_new[ "oxmodule" ]					= oxConfig::OXMODULE_THEME_PREFIX . $s_trgTheme_name;
+		$a_new[ "oxtimestamp" ]					= time();
+	
+	
+		#$a_new[ "oxvarvalue" ]					= $rows->fields[ "BINARY_VALUE" ];
+	
+		// OK!!:
+		$a_new[ "oxvarvalue" ]					= oxConfig::getInstance()->getConfigParam( "sCatIconsize" );
+		*/
+	
+		/*
+		$sUserSelect = is_numeric( $sUser ) ? "oxuser.oxcustnr = {$sUser} " : "oxuser.oxusername = " . $oDb->quote( $sUser );
+		$sPassSelect = " oxuser.oxpassword = BINARY MD5( CONCAT( ".$oDb->quote( $sPassword ).", UNHEX( oxuser.oxpasssalt ) ) ) ";
+		$sShopSelect = "";
+		*/
+		#echo utf8_encode( $a_new[ "oxvarvalue" ] );
+	
+		#echo oxConfig::getInstance()->getConfigParam( "sIconsize");        // 55*100
+		// OK!!:
+		// UPDATE `oxid_designertemple`.`oxconfig` SET `OXVARVALUE` = BINARY 0xe076e45d86330b WHERE `oxconfig`.`OXID` = 'deebe0c35d7cb86f8aff34385eca564d';
 		
-			$a_new[ "oxid" ]						= oxUtilsObject::getInstance()->generateUID();
-			$a_new[ "oxmodule" ]					= oxConfig::OXMODULE_THEME_PREFIX . $s_trgTheme_name;
-			$a_new[ "oxtimestamp" ]					= time();
 		
-		
-			#$a_new[ "oxvarvalue" ]					= $rows->fields[ "BINARY_VALUE" ];
-		
-			// OK!!:
-			$a_new[ "oxvarvalue" ]					= oxConfig::getInstance()->getConfigParam( "sCatIconsize" );
-			*/
-		
-			/*
-			$sUserSelect = is_numeric( $sUser ) ? "oxuser.oxcustnr = {$sUser} " : "oxuser.oxusername = " . $oDb->quote( $sUser );
-			$sPassSelect = " oxuser.oxpassword = BINARY MD5( CONCAT( ".$oDb->quote( $sPassword ).", UNHEX( oxuser.oxpasssalt ) ) ) ";
-			$sShopSelect = "";
-			*/
-			#echo utf8_encode( $a_new[ "oxvarvalue" ] );
-		
-			#echo oxConfig::getInstance()->getConfigParam( "sIconsize");        // 55*100
-					// OK!!:
-					// UPDATE `oxid_designertemple`.`oxconfig` SET `OXVARVALUE` = BINARY 0xe076e45d86330b WHERE `oxconfig`.`OXID` = 'deebe0c35d7cb86f8aff34385eca564d';
-		
-		
-					// ------------------------------------------------------------------------------------------------
-					if ( $this->o_a4p_debug_log ) {
-					#	$this->o_a4p_debug_log->_debug( "\$a_new", $a_new, __FILE__, __FUNCTION__, __LINE__ );
+		// ------------------------------------------------------------------------------------------------
+		if ( $this->o_a4p_debug_log ) {
+		#	$this->o_a4p_debug_log->_debug( "\$a_new", $a_new, __FILE__, __FUNCTION__, __LINE__ );
 		}		
 		
 		
@@ -277,7 +269,7 @@ class a4p_theme_manager {
 		while ( !$rows->EOF ) {
 			
 			
-		// ------------------------------------------------------------------------------------------------
+			// ------------------------------------------------------------------------------------------------
 			if ( $this->o_a4p_debug_log ) {
 			#	$this->o_a4p_debug_log->_debug( "\$rows->fields", $rows->fields, __FILE__, __FUNCTION__, __LINE__ );
 			}
