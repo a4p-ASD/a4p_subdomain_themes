@@ -9,7 +9,7 @@
  *	@date:		25.06.2014
  *
  *
- * a4p_st__oxconfig.php
+ * a4p_subdomain_themes__oxconfig.php
  *
  * apps4print - subdomain theme module for OXID eShop
  *
@@ -19,7 +19,7 @@
 // ------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
 
-class a4p_st__oxconfig extends a4p_st__oxconfig_parent {
+class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_parent {
 	
 	// ------------------------------------------------------------------------------------------------
 	// ------------------------------------------------------------------------------------------------
@@ -42,12 +42,14 @@ class a4p_st__oxconfig extends a4p_st__oxconfig_parent {
 
 		// ------------------------------------------------------------------------------------------------
 		// init a4p_debug_log
+		///*
 		$o_oxModule								= oxNew( "oxModule" );
 		$o_oxModule->load( "a4p_debug_log" );
 		if ( $o_oxModule->isActive() ) {
 			$this->o_a4p_debug_log				= oxNew( "a4p_debug_log" );
 			$this->o_a4p_debug_log->a4p_debug_log_init( true, __CLASS__ . ".txt", null );
 		}
+		//*/
 		// ------------------------------------------------------------------------------------------------
 		
 		

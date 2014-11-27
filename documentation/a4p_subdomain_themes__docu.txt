@@ -9,7 +9,7 @@
  *	@date:		25.06.2014
  *
  *
- * _a4p_subdomain_themes_features.php
+ * a4p_subdomain_themes__docu.php
  *
  * apps4print - subdomain themes module for OXID eShop
  *
@@ -37,3 +37,8 @@ FUNKTIONSUMFANG / BESONDERHEITEN
 	wird Shop über z.B. "a4p_demo1.apps4print.com" aufgerufen, wird Theme "a4p_demo1" angezeigt, falls dieses existiert und die ID "a4p_demo1" hat
 
 	wird "andererShop.com" statt "normalerShop.com" aufgerufen, wird nach der Domain in Themes gesucht und ggf aktiviert.
+
+
+HINWEISE
+
+	bei Domains wie "co.uk" oder "co.jp" (TLD-Domains mit Punkt) kann die Domainerkennung Probleme machen"

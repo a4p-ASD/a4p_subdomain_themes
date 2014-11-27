@@ -19,13 +19,7 @@
 // apps4print
 // ------------------------------------------------------------------------------------------------
 
-/**
- * apps4print - Module information
- * 
- * http://wiki.oxidforge.org/Features/Extension_metadata_file
- */
-
-$sMetadataVersion = '1.0';
+$sMetadataVersion   = '1.0';
 
 $aModule = array(
 	'id'			=> 'a4p_subdomain_themes', 
@@ -33,27 +27,27 @@ $aModule = array(
 	'description'	=> array(
 		'de'			=> 'subdomain themes', 
 		'en'			=> 'subdomain themes'
-	),
+	), 
 	'lang'			=> 'de', 
-	'thumbnail'		=> 'out/img/apps4print/_a4p_theme.jpg', 
+	'thumbnail'		=> 'out/img/apps4print/a4p_logo.jpg', 
 	'version'		=> '<a4p_VERSION> (1.0.1)', 
 	'author'		=> 'apps4print', 
 	'url'			=> 'http://www.apps4print.com', 
-	'email'			=> 'alexander.steiss@apps4print.com', 
+	'email'			=> 'support@apps4print.com', 
 	'extend'	  	=> array(
-		"oxconfig"								=> "apps4print/a4p_subdomain_themes/core/a4p_st__oxconfig"
-	),
+		"oxconfig"								=> "apps4print/a4p_subdomain_themes/core/a4p_subdomain_themes__oxconfig" 
+	), 
 	'files'			=> array(
-		"a4p_theme_manager"						=> "apps4print/a4p_subdomain_themes/core/a4p_theme_manager.php"
-	),
+		"a4p_theme_manager"						=> "apps4print/a4p_subdomain_themes/core/a4p_theme_manager.php" 
+	), 
 	'blocks'		=> array(
-	),
+	), 
 	'settings'		=> array(
-	),
+	), 
 	'templates'		=> array(
-	)
+	) 
 );
 
 // ------------------------------------------------------------------------------------------------
-// apps4print
+// ------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
