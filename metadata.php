@@ -38,7 +38,6 @@ $aModule = array(
 		"oxconfig"								=> "apps4print/a4p_subdomain_themes/core/a4p_subdomain_themes__oxconfig" 
 	), 
 	'files'			=> array(
-		"a4p_theme_manager"						=> "apps4print/a4p_subdomain_themes/core/a4p_theme_manager.php" 
 	), 
 	'blocks'		=> array(
 	), 
