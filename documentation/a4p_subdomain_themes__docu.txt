@@ -17,17 +17,11 @@
 
 
 
-CHANGES:
+// ------------------------------------------------------------------------------------------------
+Beschreibung:
 
-	25.06.2014		Childthemes werden unterstützt
-
-
-
-VORAUSSETZUNGEN
-
-
-FUNKTIONSUMFANG / BESONDERHEITEN
-
+	Themes je (Sub-)Domain wechseln
+	
 
 	Kurzbeschreibung:
 
@@ -36,9 +30,18 @@ FUNKTIONSUMFANG / BESONDERHEITEN
 	
 	wird Shop über z.B. "a4p_demo1.apps4print.com" aufgerufen, wird Theme "a4p_demo1" angezeigt, falls dieses existiert und die ID "a4p_demo1" hat
 
-	wird "andererShop.com" statt "normalerShop.com" aufgerufen, wird nach der Domain in Themes gesucht und ggf aktiviert.
+	wird "andererShop.com" statt "normalerShop.com" aufgerufen, wird nach der Domain in Themes gesucht und ggf. aktiviert.
 
 
-HINWEISE
 
-	bei Domains wie "co.uk" oder "co.jp" (TLD-Domains mit Punkt) kann die Domainerkennung Probleme machen"
+// ------------------------------------------------------------------------------------------------
+Hinweise:
+
+	bei Domains wie "co.uk" oder "co.jp" (TLD-Domains mit Punkt) kann die Domainerkennung Probleme machen
+
+
+
+// ------------------------------------------------------------------------------------------------
+Versionen / Changelog:
+
+	25.06.2014		Childthemes werden unterstützt

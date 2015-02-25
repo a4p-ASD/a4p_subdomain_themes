@@ -42,7 +42,8 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 
 		// ------------------------------------------------------------------------------------------------
 		// init a4p_debug_log
-		///*
+		//
+		/*
 		$o_oxModule								= oxNew( "oxModule" );
 		$o_oxModule->load( "a4p_debug_log" );
 		if ( $o_oxModule->isActive() ) {

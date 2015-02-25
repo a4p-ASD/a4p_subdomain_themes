@@ -25,8 +25,8 @@ $aModule = array(
 	'id'			=> 'a4p_subdomain_themes', 
 	'title'			=> 'apps4print - a4p_subdomain_themes', 
 	'description'	=> array(
-		'de'			=> 'Themes je (Sub-)Domain wechseln', 
-		'en'			=> 'change themes by (sub-)domain'
+		'de'									=> 'Themes je (Sub-)Domain wechseln', 
+		'en'									=> 'change themes by (sub-)domain' 
 	), 
 	'lang'			=> 'de', 
 	'thumbnail'		=> 'out/img/apps4print/a4p_logo.jpg', 
