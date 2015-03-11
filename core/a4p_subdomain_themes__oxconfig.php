@@ -11,7 +11,7 @@
  *
  * a4p_subdomain_themes__oxconfig.php
  *
- * apps4print - subdomain theme module for OXID eShop
+ *	apps4print - a4p_subdomain_themes - Themes je (Sub-)Domain wechseln
  *
  */
 

@@ -11,7 +11,7 @@
  *
  * a4p_subdomain_themes__docu.php
  *
- * apps4print - subdomain themes module for OXID eShop
+ * apps4print - a4p_subdomain_themes - Themes je (Sub-)Domain wechseln
  *
  */
 
@@ -21,6 +21,8 @@
 Beschreibung:
 
 	Themes je (Sub-)Domain wechseln
+	
+	Nützlich, um zum Beispiel einen Demoshop einzurichten.
 	
 
 	Kurzbeschreibung:

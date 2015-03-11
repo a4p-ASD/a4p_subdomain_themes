@@ -11,7 +11,7 @@
  *
  *	metadata.php
  *
- *	apps4print - subdomain themes - Themes je (Sub-)Domain wechseln
+ *	apps4print - a4p_subdomain_themes - Themes je (Sub-)Domain wechseln
  *
  */
 
