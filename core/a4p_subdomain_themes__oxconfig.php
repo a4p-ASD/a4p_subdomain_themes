@@ -145,12 +145,13 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 
 		// ------------------------------------------------------------------------------------------------
 		if ( $this->o_a4p_debug_log ) {
-			$this->o_a4p_debug_log->_log( __CLASS__ . "::_set_theme( \$s_themeName )", $s_themeName, __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_log( __CLASS__ . "::_set_theme( \$s_themeName )", $s_themeName, __FILE__, __FUNCTION__, __LINE__ );
 		}
 
 
 		// ------------------------------------------------------------------------------------------------
 		// prüfen, ob Theme existiert
+		$b_oxTheme_exists						= false;
 		$o_oxTheme								= oxNew( "oxTheme" );
 		if ( $s_themeName ) {
 
@@ -223,7 +224,7 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 
 		// ------------------------------------------------------------------------------------------------
 		if ( $this->o_a4p_debug_log ) {
-			$this->o_a4p_debug_log->_log( __CLASS__ . "::_set_shopUrl()", "null", __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_log( __CLASS__ . "::_set_shopUrl()", "null", __FILE__, __FUNCTION__, __LINE__ );
 		}
 
 
@@ -240,7 +241,7 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 
 		// ------------------------------------------------------------------------------------------------
 		if ( $this->o_a4p_debug_log ) {
-			$this->o_a4p_debug_log->_log( "\$s_shop_URL", $s_shop_URL, __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_log( "\$s_shop_URL", $s_shop_URL, __FILE__, __FUNCTION__, __LINE__ );
 		}
 
 
