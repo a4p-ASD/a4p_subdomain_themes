@@ -43,7 +43,7 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		// ------------------------------------------------------------------------------------------------
 		// init a4p_debug_log
 		//
-		/*
+			/*
 		$o_oxModule								= oxNew( "oxModule" );
 		$o_oxModule->load( "a4p_debug_log" );
 		if ( $o_oxModule->isActive() ) {
@@ -151,7 +151,6 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 
 		// ------------------------------------------------------------------------------------------------
 		// prüfen, ob Theme existiert
-		$b_oxTheme_exists						= false;
 		$o_oxTheme								= oxNew( "oxTheme" );
 		if ( $s_themeName ) {
 
@@ -227,6 +226,9 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		#	$this->o_a4p_debug_log->_log( __CLASS__ . "::_set_shopUrl()", "null", __FILE__, __FUNCTION__, __LINE__ );
 		}
 
+		
+		$s_shop_URL__config						= $this->getConfigParam( "sShopURL" );
+		
 
 		// ------------------------------------------------------------------------------------------------
 		// Shop-URL zusammensetzen
@@ -237,11 +239,21 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		else
 			$s_server_protocol					= "http://";
 
-		$s_shop_URL								= $s_server_protocol . $_SERVER[ "SERVER_NAME" ] . "/";
+		$s_shop_URL								= $s_server_protocol . $_SERVER[ "SERVER_NAME" ] . DIRECTORY_SEPARATOR;
 
 		// ------------------------------------------------------------------------------------------------
+		// falls Shop in Unterorder liegt, diesen anhängen
+		$s_domain_with_path						= substr( $s_shop_URL__config, strpos( $s_shop_URL__config, "//" ) + 2 );
+		$s_server_path							= substr( $s_domain_with_path, strpos( $s_domain_with_path, "/" ) + 1 );
+		
+		$s_shop_URL								.= $s_server_path;
+		
+		// ------------------------------------------------------------------------------------------------
 		if ( $this->o_a4p_debug_log ) {
+		#	$this->o_a4p_debug_log->_log( "\$s_shop_URL__config", $s_shop_URL__config, __FILE__, __FUNCTION__, __LINE__ );
 		#	$this->o_a4p_debug_log->_log( "\$s_shop_URL", $s_shop_URL, __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_log( "\$_SERVER", $_SERVER, __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_log( "pathinfo request_uri", pathinfo( $_SERVER[ "REQUEST_URI" ] ), __FILE__, __FUNCTION__, __LINE__ );
 		}
 
 
