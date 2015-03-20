@@ -41,6 +41,7 @@ Hinweise:
 
 	bei Domains wie "co.uk" oder "co.jp" (TLD-Domains mit Punkt) kann die Domainerkennung Probleme machen
 
+	in der Datei config.inc.php (Shop-Hauptverzeichnis) sollte 'aCookieDomains' und 'aCookiePaths' passend gesetzt sein, um mehrere Subdomains zu unterstützen
 
 
 // ------------------------------------------------------------------------------------------------
