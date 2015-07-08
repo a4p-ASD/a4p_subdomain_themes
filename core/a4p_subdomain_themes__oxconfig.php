@@ -66,7 +66,7 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 
 		// ------------------------------------------------------------------------------------------------
 		// auf Adminseite nicht ändern
-		if ( $this->isAdmin() ) {
+		if ( $this->isAdmin() || $blAdmin ) {
 
 			return parent::getShopUrl( $iLang, $blAdmin );
 		}
