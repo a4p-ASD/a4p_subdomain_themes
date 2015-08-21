@@ -5,8 +5,8 @@
  *	@company:	apps4print / page one GmbH, Nürnberg, Germany
  *
  *
- *	@version:	1.0.2
- *	@date:		06.03.2015
+ *	@version:	1.0.3
+ *	@date:		21.08.2015
  *
  *
  * a4p_subdomain_themes__oxconfig.php
