@@ -57,7 +57,7 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		// ------------------------------------------------------------------------------------------------
 		if ( $this->o_a4p_debug_log ) {
 		#	$this->o_a4p_debug_log->_log( "\$this->isAdmin()", $this->isAdmin(), __FILE__, __FUNCTION__, __LINE__ );
-		#	$this->o_a4p_debug_log->_log( "\$_SERVER", $_SERVER, __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_log( "\$_SER VER", $_SER VER, __FILE__, __FUNCTION__, __LINE__ );
 		#	$this->o_a4p_debug_log->_log( __CLASS__ . "::getShopUrl( \$iLang = null, \$blAdmin = null )", "null", __FILE__, __FUNCTION__, __LINE__ );
 		#	$this->o_a4p_debug_log->_log( "\$iLang", $iLang, __FILE__, __FUNCTION__, __LINE__ );
 		#	$this->o_a4p_debug_log->_log( "\$blAdmin", $blAdmin, __FILE__, __FUNCTION__, __LINE__ );
@@ -232,15 +232,22 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 
 		// ------------------------------------------------------------------------------------------------
 		// Shop-URL zusammensetzen
-		if ( $_SERVER[ "SERVER_PORT" ] == 80 )
+		/*
+		if ( $_SER VER[ "SERVER_PORT" ] == 80 )
 			$s_server_protocol					= "http://";
-		else if ( $_SERVER[ "SERVER_PORT" ] == 443 )
+		else if ( $_SER VER[ "SERVER_PORT" ] == 443 )
 			$s_server_protocol					= "https://";
 		else
 			$s_server_protocol					= "http://";
+		*/
+		$s_server_protocol						= "http://";
+		if ( $this->_checkSsl() )
+			$s_server_protocol					= "https://";
+		
 
-		$s_shop_URL								= $s_server_protocol . $_SERVER[ "SERVER_NAME" ] . DIRECTORY_SEPARATOR;
-
+		#$s_shop_URL							= $s_server_protocol . $_SER VER[ "SERVER_NAME" ] . DIRECTORY_SEPARATOR;
+		$s_shop_URL								= $s_server_protocol . $this->_get_server_url() . DIRECTORY_SEPARATOR;
+		
 		// ------------------------------------------------------------------------------------------------
 		// falls Shop in Unterorder liegt, diesen anhängen
 		$s_domain_with_path						= substr( $s_shop_URL__config, strpos( $s_shop_URL__config, "//" ) + 2 );
@@ -252,8 +259,8 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		if ( $this->o_a4p_debug_log ) {
 		#	$this->o_a4p_debug_log->_log( "\$s_shop_URL__config", $s_shop_URL__config, __FILE__, __FUNCTION__, __LINE__ );
 		#	$this->o_a4p_debug_log->_log( "\$s_shop_URL", $s_shop_URL, __FILE__, __FUNCTION__, __LINE__ );
-		#	$this->o_a4p_debug_log->_log( "\$_SERVER", $_SERVER, __FILE__, __FUNCTION__, __LINE__ );
-		#	$this->o_a4p_debug_log->_log( "pathinfo request_uri", pathinfo( $_SERVER[ "REQUEST_URI" ] ), __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_log( "\$_SER VER", $_SER VER, __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_log( "pathinfo request_uri", pathinfo( $_SER VER[ "REQUEST_URI" ] ), __FILE__, __FUNCTION__, __LINE__ );
 		}
 
 
@@ -274,8 +281,9 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		// ------------------------------------------------------------------------------------------------
 
 		// z.B. demo.shop.apps4print.com
-		$a_url_explode							= explode( ".", $_SERVER[ "SERVER_NAME" ] );
-
+		#$a_url_explode							= explode( ".", $_SER VER[ "SERVER_NAME" ] );
+		$a_url_explode							= explode( ".", $this->_get_server_url() );
+		
 		// umdrehen
 		$a_url_reverse							= array_reverse( $a_url_explode );
 
@@ -291,6 +299,18 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		return $a_domain_explode;
 	}
 
+	// ------------------------------------------------------------------------------------------------
+	
+	protected function _get_server_url() {
+
+
+		// ------------------------------------------------------------------------------------------------
+		// Server-Variable
+		$s_current_url						= $_SERVER[ "HTTP_HOST" ];
+		
+		return $s_current_url;
+	}
+	
 	// ------------------------------------------------------------------------------------------------
 
 }
