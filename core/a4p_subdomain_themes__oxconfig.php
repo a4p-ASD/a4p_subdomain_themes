@@ -5,7 +5,7 @@
  *	@company:	apps4print / page one GmbH, Nürnberg, Germany
  *
  *
- *	@version:	1.0.3
+ *	@version:	1.0.4
  *	@date:		21.08.2015
  *
  *
@@ -139,6 +139,36 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 	}
 
 	// ------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Returns config sSSLShopURL or sMallSSLShopURL if secondary shop
+	 *
+	 * @param int $iLang language (default is null)
+	 *
+	 * @return string
+	 */
+	public function getSslShopUrl( $iLang = null ) {
+		
+		
+		// ------------------------------------------------------------------------------------------------
+		// auf Adminseite nicht ändern
+		if ( $this->isAdmin() ) {
+		
+			return parent::getSslShopUrl( $iLang );
+		}
+		// ------------------------------------------------------------------------------------------------
+		
+		
+		// ------------------------------------------------------------------------------------------------
+		// Shop-URL auf aktuelle Domain setzen
+		$this->_set_SSLshopUrl();
+		// ------------------------------------------------------------------------------------------------
+		
+		
+		return parent::getSslShopUrl( $iLang );
+	}
+	
+	// ------------------------------------------------------------------------------------------------
 
 	protected function _set_theme( $s_themeName ) {
 
@@ -241,8 +271,8 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 			$s_server_protocol					= "http://";
 		*/
 		$s_server_protocol						= "http://";
-		if ( $this->_checkSsl() )
-			$s_server_protocol					= "https://";
+		#if ( $this->_checkSsl() )
+		#	$s_server_protocol					= "https://";
 		
 
 		#$s_shop_URL							= $s_server_protocol . $_SER VER[ "SERVER_NAME" ] . DIRECTORY_SEPARATOR;
@@ -268,6 +298,59 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		// Shop-URL auf Subdomain setzen
 		$this->setConfigParam( "sShopURL", $s_shop_URL );
 
+	}
+
+	// ------------------------------------------------------------------------------------------------
+
+	protected function _set_SSLshopUrl() {
+
+
+		// ------------------------------------------------------------------------------------------------
+		if ( $this->o_a4p_debug_log ) {
+		#	$this->o_a4p_debug_log->_log( __CLASS__ . "::_set_SSLshopUrl()", "null", __FILE__, __FUNCTION__, __LINE__ );
+		}
+
+		
+		$s_SSLshop_URL__config						= $this->getConfigParam( "sSSLShopURL" );
+		
+
+		// ------------------------------------------------------------------------------------------------
+		// Shop-URL zusammensetzen
+		/*
+		if ( $_SER VER[ "SERVER_PORT" ] == 80 )
+			$s_server_protocol					= "http://";
+		else if ( $_SER VER[ "SERVER_PORT" ] == 443 )
+			$s_server_protocol					= "https://";
+		else
+			$s_server_protocol					= "http://";
+		*/
+		#$s_server_protocol						= "http://";
+		#if ( $this->_checkSsl() )
+		$s_server_protocol						= "https://";
+		
+
+		#$s_shop_URL							= $s_server_protocol . $_SER VER[ "SERVER_NAME" ] . DIRECTORY_SEPARATOR;
+		$s_SSLshop_URL							= $s_server_protocol . $this->_get_server_url() . DIRECTORY_SEPARATOR;
+		
+		// ------------------------------------------------------------------------------------------------
+		// falls Shop in Unterorder liegt, diesen anhängen
+		$s_domain_with_path						= substr( $s_SSLshop_URL__config, strpos( $s_SSLshop_URL__config, "//" ) + 2 );
+		$s_server_path							= substr( $s_domain_with_path, strpos( $s_domain_with_path, "/" ) + 1 );
+		
+		$s_SSLshop_URL							.= $s_server_path;
+		
+		// ------------------------------------------------------------------------------------------------
+		if ( $this->o_a4p_debug_log ) {
+		#	$this->o_a4p_debug_log->_log( "\$s_shop_URL__config", $s_shop_URL__config, __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_log( "\$s_shop_URL", $s_shop_URL, __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_log( "\$_SER VER", $_SER VER, __FILE__, __FUNCTION__, __LINE__ );
+		#	$this->o_a4p_debug_log->_log( "pathinfo request_uri", pathinfo( $_SER VER[ "REQUEST_URI" ] ), __FILE__, __FUNCTION__, __LINE__ );
+		}
+
+
+		// ------------------------------------------------------------------------------------------------
+		// Shop-URL auf Subdomain setzen
+		$this->setConfigParam( "sSSLShopURL", $s_SSLshop_URL );
 
 	}
 
