@@ -5,16 +5,15 @@
  *	@company:	apps4print / page one GmbH, Nürnberg, Germany
  *
  *
- *	@version:	1.0.4
- *	@date:		21.08.2015
+ *	@version:	1.0.5
+ *	@date:		13.04.2016
  *
  *
- * a4p_subdomain_themes__docu.php
+ *	a4p_subdomain_themes__docu.txt
  *
  * apps4print - a4p_subdomain_themes - Themes je (Sub-)Domain wechseln
  *
  */
-
 
 
 // ------------------------------------------------------------------------------------------------
@@ -44,8 +43,93 @@ Hinweise:
 	in der Datei config.inc.php (Shop-Hauptverzeichnis) sollte 'aCookieDomains' und 'aCookiePaths' passend gesetzt sein, um mehrere Subdomains zu unterstützen
 
 
+
+// ------------------------------------------------------------------------------------------------
+Überladene OXID-Klassen:	
+
+
+
+// ------------------------------------------------------------------------------------------------
+Überladene Modul-Klassen:	
+
+
+
+// ------------------------------------------------------------------------------------------------
+Überladene Blöcke:
+
+
+
+// ------------------------------------------------------------------------------------------------
+hinzugefügte/verwendete CMS-Seiten:	
+
+
+
+// ------------------------------------------------------------------------------------------------
+Installation:
+
+
+
+// ------------------------------------------------------------------------------------------------
+Kompatibilität:
+
+
+
+// ------------------------------------------------------------------------------------------------
+Abhängigkeiten:
+
+
+
+// ------------------------------------------------------------------------------------------------
+Aufrufe:
+
+
+
+// ------------------------------------------------------------------------------------------------
+Details:
+	
+
+
+
+// ------------------------------------------------------------------------------------------------
+// gesteste Versionen:
+
+	CE				4.9.7	OK
+
+
+
 // ------------------------------------------------------------------------------------------------
 Versionen / Changelog:
+	
+	13.04.2016      1.0.5   nicht $_SERVER direkt verwenden -> OXID-Fkt.
+	16.03.2015		1.0.4   aufgeräumt (Teile in oxconfig auf mehrere Funktionen verteilt)
+	25.06.2014		1.0.3   Childthemes werden unterstützt
 
-	16.03.2015		Version 1.0.4: aufgeräumt (Teile in oxconfig auf mehrere Funktionen verteilt)
-	25.06.2014		Childthemes werden unterstützt
+
+
+// ------------------------------------------------------------------------------------------------
+Kontakt:
+
+	Vertrieb:
+			
+		Alexander Steiss
+
+		tel. 0911 9264 -425
+		mail alexander.steiss@apps4print.com
+
+
+	Support:	
+
+		Andreas Dorner
+
+		tel. 0911 9264 -424
+		mail support@apps4print.com
+
+
+	page one GmbH
+	Schwabacher Str. 3
+	90439 Nürnberg
+
+	www.apps4print.com
+
+	tel. 0911 9264 -400
+	fax. 0911 9264 -401
