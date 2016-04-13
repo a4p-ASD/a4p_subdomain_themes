@@ -32,7 +32,7 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 	/**
 	 * Returns config sShopURL or sMallShopURL if secondary shop
 	 *
-	 * @param int  $iLang   language
+	 * @param int	$iLang	language
 	 * @param bool $blAdmin if admin
 	 *
 	 * @return string
@@ -120,26 +120,26 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		}
 
 
-		
+
 		// ------------------------------------------------------------------------------------------------
 		// (Child-)Theme für (Sub-)Domain setzen
 		$this->_set_theme( $s_url_themename );
 		// ------------------------------------------------------------------------------------------------
-		
+
 
 
 		// ------------------------------------------------------------------------------------------------
 		// Shop-URL auf aktuelle Domain setzen
 		$this->_set_shopUrl();
 		// ------------------------------------------------------------------------------------------------
-		
+
 
 
 		return parent::getShopUrl( $iLang, $blAdmin );
 	}
 
 	// ------------------------------------------------------------------------------------------------
-	
+
 	/**
 	 * Returns config sSSLShopURL or sMallSSLShopURL if secondary shop
 	 *
@@ -148,26 +148,26 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 	 * @return string
 	 */
 	public function getSslShopUrl( $iLang = null ) {
-		
-		
+
+
 		// ------------------------------------------------------------------------------------------------
 		// auf Adminseite nicht ändern
 		if ( $this->isAdmin() ) {
-		
+
 			return parent::getSslShopUrl( $iLang );
 		}
 		// ------------------------------------------------------------------------------------------------
-		
-		
+
+
 		// ------------------------------------------------------------------------------------------------
 		// Shop-URL auf aktuelle Domain setzen
 		$this->_set_SSLshopUrl();
 		// ------------------------------------------------------------------------------------------------
-		
-		
+
+
 		return parent::getSslShopUrl( $iLang );
 	}
-	
+
 	// ------------------------------------------------------------------------------------------------
 
 	protected function _set_theme( $s_themeName ) {
@@ -256,9 +256,12 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		#	$this->o_a4p_debug_log->_log( __CLASS__ . "::_set_shopUrl()", "null", __FILE__, __FUNCTION__, __LINE__ );
 		}
 
-		
+
+		$o_oxutilsserver						= oxRegistry::get( "oxUtilsServer" );
+
+
 		$s_shop_URL__config						= $this->getConfigParam( "sShopURL" );
-		
+
 
 		// ------------------------------------------------------------------------------------------------
 		// Shop-URL zusammensetzen
@@ -273,18 +276,19 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		$s_server_protocol						= "http://";
 		#if ( $this->_checkSsl() )
 		#	$s_server_protocol					= "https://";
-		
+
 
 		#$s_shop_URL							= $s_server_protocol . $_SER VER[ "SERVER_NAME" ] . DIRECTORY_SEPARATOR;
-		$s_shop_URL								= $s_server_protocol . $this->_get_server_url() . DIRECTORY_SEPARATOR;
-		
+		#$s_shop_URL								= $s_server_protocol . $this->_get_ser ver_url() . DIRECTORY_SEPARATOR;
+		$s_shop_URL								= $s_server_protocol . $o_oxutilsserver->getServerVar( "HTTP_HOST" ) . DIRECTORY_SEPARATOR;
+
 		// ------------------------------------------------------------------------------------------------
 		// falls Shop in Unterorder liegt, diesen anhängen
 		$s_domain_with_path						= substr( $s_shop_URL__config, strpos( $s_shop_URL__config, "//" ) + 2 );
 		$s_server_path							= substr( $s_domain_with_path, strpos( $s_domain_with_path, "/" ) + 1 );
-		
+
 		$s_shop_URL								.= $s_server_path;
-		
+
 		// ------------------------------------------------------------------------------------------------
 		if ( $this->o_a4p_debug_log ) {
 		#	$this->o_a4p_debug_log->_log( "\$s_shop_URL__config", $s_shop_URL__config, __FILE__, __FUNCTION__, __LINE__ );
@@ -310,9 +314,12 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		#	$this->o_a4p_debug_log->_log( __CLASS__ . "::_set_SSLshopUrl()", "null", __FILE__, __FUNCTION__, __LINE__ );
 		}
 
-		
-		$s_SSLshop_URL__config						= $this->getConfigParam( "sSSLShopURL" );
-		
+
+		$o_oxutilsserver						= oxRegistry::get( "oxUtilsServer" );
+
+
+		$s_SSLshop_URL__config					= $this->getConfigParam( "sSSLShopURL" );
+
 		// nur neu setzen, wenn auch Wert eingetragen ist
 		if ( !is_null( $s_SSLshop_URL__config ) ) {
 
@@ -320,18 +327,19 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 			// ------------------------------------------------------------------------------------------------
 			// Shop-URL zusammensetzen
 			$s_server_protocol						= "https://";
-			
-	
+
+
 			#$s_shop_URL							= $s_server_protocol . $_SER VER[ "SERVER_NAME" ] . DIRECTORY_SEPARATOR;
-			$s_SSLshop_URL							= $s_server_protocol . $this->_get_server_url() . DIRECTORY_SEPARATOR;
-			
+			#$s_SSLshop_URL							= $s_server_protocol . $this->_get_ser ver_url() . DIRECTORY_SEPARATOR;
+			$s_SSLshop_URL							= $s_server_protocol . $o_oxutilsserver->getServerVar( "HTTP_HOST" ) . DIRECTORY_SEPARATOR;
+
 			// ------------------------------------------------------------------------------------------------
 			// falls Shop in Unterorder liegt, diesen anhängen
 			$s_domain_with_path						= substr( $s_SSLshop_URL__config, strpos( $s_SSLshop_URL__config, "//" ) + 2 );
 			$s_server_path							= substr( $s_domain_with_path, strpos( $s_domain_with_path, "/" ) + 1 );
-			
+
 			$s_SSLshop_URL							.= $s_server_path;
-			
+
 			// ------------------------------------------------------------------------------------------------
 			if ( $this->o_a4p_debug_log ) {
 			#	$this->o_a4p_debug_log->_log( "\$s_shop_URL__config", $s_shop_URL__config, __FILE__, __FUNCTION__, __LINE__ );
@@ -339,29 +347,32 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 			#	$this->o_a4p_debug_log->_log( "\$_SER VER", $_SER VER, __FILE__, __FUNCTION__, __LINE__ );
 			#	$this->o_a4p_debug_log->_log( "pathinfo request_uri", pathinfo( $_SER VER[ "REQUEST_URI" ] ), __FILE__, __FUNCTION__, __LINE__ );
 			}
-	
-	
+
+
 			// ------------------------------------------------------------------------------------------------
 			// Shop-URL auf Subdomain setzen
 			$this->setConfigParam( "sSSLShopURL", $s_SSLshop_URL );
-			
+
 		}
-		
+
 	}
 
 	// ------------------------------------------------------------------------------------------------
 
 	protected function _explode_domain() {
 
-
 		// ------------------------------------------------------------------------------------------------
 		// URL in Subdomain, Domainname und Toplevel-Domain aufteilen
 		// ------------------------------------------------------------------------------------------------
 
+		$o_oxutilsserver						= oxRegistry::get( "oxUtilsServer" );
+
+
 		// z.B. demo.shop.apps4print.com
 		#$a_url_explode							= explode( ".", $_SER VER[ "SERVER_NAME" ] );
-		$a_url_explode							= explode( ".", $this->_get_server_url() );
-		
+		#$a_url_explode							= explode( ".", $this->_get_ser ver_url() );
+		$a_url_explode							= explode( ".", $o_oxutilsserver->getServerVar( "HTTP_HOST" ) );
+
 		// umdrehen
 		$a_url_reverse							= array_reverse( $a_url_explode );
 
@@ -377,18 +388,6 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		return $a_domain_explode;
 	}
 
-	// ------------------------------------------------------------------------------------------------
-	
-	protected function _get_server_url() {
-
-
-		// ------------------------------------------------------------------------------------------------
-		// Server-Variable
-		$s_current_url						= $_SERVER[ "HTTP_HOST" ];
-		
-		return $s_current_url;
-	}
-	
 	// ------------------------------------------------------------------------------------------------
 
 }
