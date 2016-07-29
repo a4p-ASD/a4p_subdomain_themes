@@ -5,8 +5,8 @@
  *	@company:	apps4print / page one GmbH, Nürnberg, Germany
  *
  *
- *	@version:	1.0.5
- *	@date:		13.04.2016
+ *	@version:	1.0.6
+ *	@date:		29.07.2016
  *
  *
  * a4p_subdomain_themes__oxconfig.php
@@ -55,16 +55,6 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 
 
 		// ------------------------------------------------------------------------------------------------
-		if ( $this->o_a4p_debug_log ) {
-		#	$this->o_a4p_debug_log->_log( "\$this->isAdmin()", $this->isAdmin(), __FILE__, __FUNCTION__, __LINE__ );
-		#	$this->o_a4p_debug_log->_log( "\$_SER VER", $_SER VER, __FILE__, __FUNCTION__, __LINE__ );
-		#	$this->o_a4p_debug_log->_log( __CLASS__ . "::getShopUrl( \$iLang = null, \$blAdmin = null )", "null", __FILE__, __FUNCTION__, __LINE__ );
-		#	$this->o_a4p_debug_log->_log( "\$iLang", $iLang, __FILE__, __FUNCTION__, __LINE__ );
-		#	$this->o_a4p_debug_log->_log( "\$blAdmin", $blAdmin, __FILE__, __FUNCTION__, __LINE__ );
-		}
-
-
-		// ------------------------------------------------------------------------------------------------
 		// auf Adminseite nicht ändern
 		if ( $this->isAdmin() || $blAdmin ) {
 
@@ -82,22 +72,9 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 
 
 		// ------------------------------------------------------------------------------------------------
-		if ( $this->o_a4p_debug_log ) {
-		#	$this->o_a4p_debug_log->_log( "\$s_cur_theme", $s_cur_theme, __FILE__, __FUNCTION__, __LINE__ );
-		#	$this->o_a4p_debug_log->_log( "\$s_cur_child_theme", $s_cur_child_theme, __FILE__, __FUNCTION__, __LINE__ );
-		}
-
-
-		// ------------------------------------------------------------------------------------------------
 		// URL in Subdomain, Domainname und Toplevel-Domain aufteilen
 		$a_domain_explode						= $this->_explode_domain();
 		// ------------------------------------------------------------------------------------------------
-
-
-		// ------------------------------------------------------------------------------------------------
-		if ( $this->o_a4p_debug_log ) {
-		#	$this->o_a4p_debug_log->_log( "\$a_domain_explode", $a_domain_explode, __FILE__, __FUNCTION__, __LINE__ );
-		}
 
 
 		// ------------------------------------------------------------------------------------------------
@@ -112,13 +89,6 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		// ------------------------------------------------------------------------------------------------
 		#if( $s_url_themename == $s_cur_theme )
 		#	$s_url_themename					= false;
-
-
-		// ------------------------------------------------------------------------------------------------
-		if ( $this->o_a4p_debug_log ) {
-		#	$this->o_a4p_debug_log->_log( "\$s_url_themename", $s_url_themename, __FILE__, __FUNCTION__, __LINE__ );
-		}
-
 
 
 		// ------------------------------------------------------------------------------------------------
@@ -174,12 +144,6 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 
 
 		// ------------------------------------------------------------------------------------------------
-		if ( $this->o_a4p_debug_log ) {
-		#	$this->o_a4p_debug_log->_log( __CLASS__ . "::_set_theme( \$s_themeName )", $s_themeName, __FILE__, __FUNCTION__, __LINE__ );
-		}
-
-
-		// ------------------------------------------------------------------------------------------------
 		// prüfen, ob Theme existiert
 		$o_oxTheme								= oxNew( "oxTheme" );
 		if ( $s_themeName ) {
@@ -200,10 +164,6 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 			// Parent-Theme suchen
 			$s_parent_theme						= $o_oxTheme->getInfo( "parentTheme" );
 
-			// ------------------------------------------------------------------------------------------------
-			if ( $this->o_a4p_debug_log ) {
-			#	$this->o_a4p_debug_log->_log( "\$s_parent_theme", $s_parent_theme, __FILE__, __FUNCTION__, __LINE__ );
-			}
 
 			// ------------------------------------------------------------------------------------------------
 			// Parent-Theme setzen
@@ -233,13 +193,6 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 			}
 
 
-			// ------------------------------------------------------------------------------------------------
-			if ( $this->o_a4p_debug_log ) {
-			#	$this->o_a4p_debug_log->_log( "getConfigParam sTheme", $this->getConfigParam( "sTheme" ), __FILE__, __FUNCTION__, __LINE__ );
-			#	$this->o_a4p_debug_log->_log( "getConfigParam sCustomTheme", $this->getConfigParam( "sCustomTheme" ), __FILE__, __FUNCTION__, __LINE__ );
-			}
-
-
 		}
 		// ------------------------------------------------------------------------------------------------
 
@@ -249,12 +202,6 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 	// ------------------------------------------------------------------------------------------------
 
 	protected function _set_shopUrl() {
-
-
-		// ------------------------------------------------------------------------------------------------
-		if ( $this->o_a4p_debug_log ) {
-		#	$this->o_a4p_debug_log->_log( __CLASS__ . "::_set_shopUrl()", "null", __FILE__, __FUNCTION__, __LINE__ );
-		}
 
 
 		$o_oxutilsserver						= oxRegistry::get( "oxUtilsServer" );
@@ -276,6 +223,10 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		$s_server_protocol						= "http://";
 		#if ( $this->_checkSsl() )
 		#	$s_server_protocol					= "https://";
+		
+		#if ( substr( $s_shop_URL__config, 0, 8 ) === "https://" )		// 6ms
+		if ( $s_shop_URL__config[4] === "s" )							// 2ms
+			$s_server_protocol					= "https://";
 
 
 		#$s_shop_URL							= $s_server_protocol . $_SER VER[ "SERVER_NAME" ] . DIRECTORY_SEPARATOR;
@@ -289,14 +240,6 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 
 		$s_shop_URL								.= $s_server_path;
 
-		// ------------------------------------------------------------------------------------------------
-		if ( $this->o_a4p_debug_log ) {
-		#	$this->o_a4p_debug_log->_log( "\$s_shop_URL__config", $s_shop_URL__config, __FILE__, __FUNCTION__, __LINE__ );
-		#	$this->o_a4p_debug_log->_log( "\$s_shop_URL", $s_shop_URL, __FILE__, __FUNCTION__, __LINE__ );
-		#	$this->o_a4p_debug_log->_log( "\$_SER VER", $_SER VER, __FILE__, __FUNCTION__, __LINE__ );
-		#	$this->o_a4p_debug_log->_log( "pathinfo request_uri", pathinfo( $_SER VER[ "REQUEST_URI" ] ), __FILE__, __FUNCTION__, __LINE__ );
-		}
-
 
 		// ------------------------------------------------------------------------------------------------
 		// Shop-URL auf Subdomain setzen
@@ -307,12 +250,6 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 	// ------------------------------------------------------------------------------------------------
 
 	protected function _set_SSLshopUrl() {
-
-
-		// ------------------------------------------------------------------------------------------------
-		if ( $this->o_a4p_debug_log ) {
-		#	$this->o_a4p_debug_log->_log( __CLASS__ . "::_set_SSLshopUrl()", "null", __FILE__, __FUNCTION__, __LINE__ );
-		}
 
 
 		$o_oxutilsserver						= oxRegistry::get( "oxUtilsServer" );
@@ -339,14 +276,6 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 			$s_server_path							= substr( $s_domain_with_path, strpos( $s_domain_with_path, "/" ) + 1 );
 
 			$s_SSLshop_URL							.= $s_server_path;
-
-			// ------------------------------------------------------------------------------------------------
-			if ( $this->o_a4p_debug_log ) {
-			#	$this->o_a4p_debug_log->_log( "\$s_shop_URL__config", $s_shop_URL__config, __FILE__, __FUNCTION__, __LINE__ );
-			#	$this->o_a4p_debug_log->_log( "\$s_shop_URL", $s_shop_URL, __FILE__, __FUNCTION__, __LINE__ );
-			#	$this->o_a4p_debug_log->_log( "\$_SER VER", $_SER VER, __FILE__, __FUNCTION__, __LINE__ );
-			#	$this->o_a4p_debug_log->_log( "pathinfo request_uri", pathinfo( $_SER VER[ "REQUEST_URI" ] ), __FILE__, __FUNCTION__, __LINE__ );
-			}
 
 
 			// ------------------------------------------------------------------------------------------------
