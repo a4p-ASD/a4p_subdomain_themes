@@ -5,8 +5,8 @@
  *	@company:	apps4print / page one GmbH, Nürnberg, Germany
  *
  *
- *	@version:	1.0.5
- *	@date:		13.04.2016
+ *	@version:	1.0.6
+ *	@date:		29.07.2016
  *
  *
  *	a4p_subdomain_themes__docu.txt
@@ -100,6 +100,7 @@ Details:
 // ------------------------------------------------------------------------------------------------
 Versionen / Changelog:
 	
+	29.07.2016      1.0.6   SSL fix
 	13.04.2016      1.0.5   nicht $_SERVER direkt verwenden -> OXID-Fkt.
 	16.03.2015		1.0.4   aufgeräumt (Teile in oxconfig auf mehrere Funktionen verteilt)
 	25.06.2014		1.0.3   Childthemes werden unterstützt
