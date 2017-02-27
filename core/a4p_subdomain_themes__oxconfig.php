@@ -5,8 +5,8 @@
  *	@company:	apps4print / page one GmbH, Nürnberg, Germany
  *
  *
- *	@version:	1.0.6
- *	@date:		29.07.2016
+ *	@version:	1.0.7
+ *	@date:		27.02.2017
  *
  *
  * a4p_subdomain_themes__oxconfig.php
@@ -57,6 +57,25 @@ class a4p_subdomain_themes__oxconfig extends a4p_subdomain_themes__oxconfig_pare
 		// ------------------------------------------------------------------------------------------------
 		// auf Adminseite nicht ändern
 		if ( $this->isAdmin() || $blAdmin ) {
+
+			return parent::getShopUrl( $iLang, $blAdmin );
+		}
+		// ------------------------------------------------------------------------------------------------
+
+
+		// ------------------------------------------------------------------------------------------------
+		// bei cron.php nichts weiter
+		#PHP_SELF:	/var/www/vhosts/drucksachencloud.de/bin/cron.php
+		if ( stristr( $_SERVER[ "PHP_SELF" ], "/bin/cron.php" ) ) {
+
+			return parent::getShopUrl( $iLang, $blAdmin );
+		}
+		// ------------------------------------------------------------------------------------------------
+
+
+		// ------------------------------------------------------------------------------------------------
+		// bei Bedarf direkt parent aufrufen
+		if ( defined( "a4p_subdomain_themes__getShopUrl__skipModule" ) && ( constant( "a4p_subdomain_themes__getShopUrl__skipModule" ) === true ) ) {
 
 			return parent::getShopUrl( $iLang, $blAdmin );
 		}
